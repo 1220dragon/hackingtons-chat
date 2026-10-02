@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chat Room</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <h1>Chat room</h1>
+    <p>I'm working on this site rn, might bug or look a little weird</p>
+    
+
+    <div data-logged-out>
+      <form data-login>
+        <div class="row">
+          <input name="username" placeholder="Username" autocomplete="username" required>
+          <input name="password" type="password" placeholder="Password" autocomplete="current-password" required>
+          <button>Log in</button>
+        </div>
+        <p class="hint">No account? <a href="#" data-switch>Sign up</a></p>
+      </form>
+
+      <form data-signup hidden>
+        <div class="row">
+          <input name="username" placeholder="Pick a username" autocomplete="username" required>
+          <input name="password" type="password" placeholder="Pick a password" autocomplete="new-password" required>
+          <button>Sign up</button>
+          <p>preferably use your Hackingtons username.</p>
+        </div>
+        <p class="hint">
+          Never use a password you use anywhere else.
+          Already signed up? <a href="#" data-switch>Log in</a>
+        </p>
+      </form>
+    </div>
+
+    <div class="gate" data-waiting>
+      <p>Thanks, <b data-username></b>! You can chat once the owner of this site lets you in.</p>
+      <button class="btn--quiet" data-logout>Log out</button>
+    </div>
+
+    <div data-logged-in>
+      <form data-insert="messages">
+        <div class="row">
+          <input class="grow" name="text" placeholder="Say something&hellip;" maxlength="300" required autocomplete="off">
+          
+          <button>Send</button>
+        </div>
+        <div class="row">
+          <span class="who">You are <b data-username></b></span>
+          <button class="btn--quiet" type="button" data-logout>Log out</button>
+        </div>
+      </form>
+    </div>
+
+    <p class="msg" data-message></p>
+
+    <!-- A list inside data-logged-in stays empty until somebody logs in. -->
+    <div data-logged-in>
+    <ul class="list" data-list="messages" data-limit="10000">
+      <li class="item">
+        <img src=data-field="pfp" alt=""></img>
+        <span></span><b data-field="by"></b>
+        
+        <span> on </span><span class="meta" data-field="when"></span><p class="grow" data-field="text"></p>
+        
+        <button class="mini mini--danger" data-delete>Delete</button>
+      </li>
+      <li class="empty" data-empty>Nothing said yet.</li>
+    </ul>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="database.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
+
